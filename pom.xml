@@ -3,16 +3,20 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.linhx1999</groupId>
-    <artifactId>springboot2-spark-es-mongo-starter</artifactId>
+    <artifactId>springboot2-spark-mongo-starter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot2-spark-es-mongo-starter</name>
+    <name>springboot2-spark-mongo-starter</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.7.6</spring-boot.version>
+        <spark.version>3.4.3</spark.version>
+        <scala.version>2.13</scala.version>
+        <mongo-spark-connector.version>10.2.3</mongo-spark-connector.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -24,7 +28,25 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-sql -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_${scala.version}</artifactId>
+            <version>${spark.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.mongodb.spark/mongo-spark-connector -->
+        <dependency>
+            <groupId>org.mongodb.spark</groupId>
+            <artifactId>mongo-spark-connector_${scala.version}</artifactId>
+            <version>${mongo-spark-connector.version}</version>
+        </dependency>
+
+
     </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -54,7 +76,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>com.linhx1999.springboot2sparkesmongostarter.Springboot2SparkEsMongoStarterApplication</mainClass>
+                    <mainClass>com.linhx1999.springboot2sparkmongostarter.Springboot2SparkEsMongoStarterApplication</mainClass>
                     <skip>true</skip>
                 </configuration>
                 <executions>
